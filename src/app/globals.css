@@ -1,0 +1,160 @@
+@import "tailwindcss";
+@import "../styles/wernix-colors.css";
+
+/*
+ * Tailwind's default palette and radii are switched off so the only colours
+ * a component can reach for are the Wernix tokens.
+ */
+@theme {
+  --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+}
+
+@theme inline {
+  --color-page: var(--background-default);
+  --color-raised: var(--background-raised);
+  --color-sunken: var(--background-sunken);
+  --color-overlay: var(--background-overlay);
+
+  --color-ink: var(--text-primary);
+  --color-ink-2: var(--text-secondary);
+  --color-ink-3: var(--text-muted);
+  --color-ink-inverse: var(--text-inverse);
+
+  --color-hairline: var(--border-subtle);
+  --color-line: var(--border-default);
+  --color-line-strong: var(--border-strong);
+
+  --color-accent: var(--accent-default);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-pressed: var(--accent-pressed);
+  --color-accent-on: var(--accent-on);
+  --color-accent-text: var(--accent-text);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-line: var(--accent-line);
+
+  --color-success: var(--status-success-fg);
+  --color-success-bg: var(--status-success-bg);
+  --color-success-line: var(--status-success-border);
+  --color-warning: var(--status-warning-fg);
+  --color-warning-bg: var(--status-warning-bg);
+  --color-warning-line: var(--status-warning-border);
+  --color-error: var(--status-error-fg);
+  --color-error-bg: var(--status-error-bg);
+  --color-error-line: var(--status-error-border);
+  --color-info: var(--status-info-fg);
+  --color-info-bg: var(--status-info-bg);
+  --color-info-line: var(--status-info-border);
+
+  --color-focus: var(--focus-ring);
+
+  --radius-control: var(--radius-md);
+  --radius-card: var(--radius-lg);
+  --radius-chip: var(--radius-sm);
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background: var(--background-default);
+    color: var(--text-primary);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background: var(--background-default);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--accent-default);
+    color: var(--accent-on);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+  }
+
+  /* Pitfall 1: never overflow hidden on ancestors of sticky sections. */
+  main {
+    overflow-x: clip;
+  }
+}
+
+@layer components {
+  .hairline {
+    border: 1px solid var(--border-subtle);
+  }
+
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+  }
+
+  .wrap {
+    width: 100%;
+    max-width: 1240px;
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 640px) {
+    .wrap {
+      padding-inline: 32px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .wrap {
+      padding-inline: 48px;
+    }
+  }
+}
+
+/* No-WebGL / failed context: the canvas hides and a CSS ring takes over. */
+html.no-webgl .stage-canvas {
+  display: none;
+}
+html:not(.no-webgl) .css-ring {
+  display: none;
+}
+
+/* Callouts and other overlays that only make sense with a live scene. */
+html.no-webgl .needs-webgl {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

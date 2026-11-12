@@ -1,0 +1,176 @@
+/*
+ * Wernix colour tokens.
+ *
+ * NOTE: the brief said this file would be provided. It was not attached, so
+ * it was built from the three anchors named in the brief (Ebony #070504,
+ * Bone #f2f0ec, Verdigris #337774). Replace this file with the official one
+ * when it exists; components only reference the semantic names below.
+ * See DECISIONS.md, entry D1.
+ *
+ * Raw scales are theme-independent. Semantic tokens are defined per theme.
+ * Every text/background pair used in the UI is listed in
+ * scripts/check-contrast.mjs and checked to WCAG AA in both themes.
+ */
+
+:root {
+  /* ── Ebony → Bone: warm neutral scale ─────────────────────────── */
+  --neutral-50: #faf9f7;
+  --neutral-100: #f2f0ec; /* Bone */
+  --neutral-200: #e2ded7;
+  --neutral-300: #c9c3ba;
+  --neutral-400: #a59e94;
+  --neutral-500: #7f786f;
+  --neutral-600: #5f5952;
+  --neutral-700: #443f3a;
+  --neutral-800: #2b2724;
+  --neutral-850: #1d1a18;
+  --neutral-900: #12100e;
+  --neutral-950: #070504; /* Ebony */
+
+  /* ── Verdigris: the only brand hue ────────────────────────────── */
+  --verdigris-50: #edf5f4;
+  --verdigris-100: #d2e7e5;
+  --verdigris-200: #a8d0cc;
+  --verdigris-300: #7cb6b1;
+  --verdigris-400: #549893;
+  --verdigris-500: #337774; /* Verdigris */
+  --verdigris-600: #285f5d;
+  --verdigris-700: #1f4a48;
+  --verdigris-800: #183837;
+  --verdigris-900: #112827;
+  --verdigris-950: #091716;
+
+  /* ── Status: three shades each (300 light, 500 base, 700 deep) ── */
+  --success-300: #9fc48a;
+  --success-500: #5b8a45;
+  --success-700: #3a5c2b;
+  --warning-300: #e2b866;
+  --warning-500: #b0832a;
+  --warning-700: #6f5114;
+  --error-300: #e59a8c;
+  --error-500: #b8513f;
+  --error-700: #7c3125;
+  --info-300: #9db6c9;
+  --info-500: #557a96;
+  --info-700: #34506a;
+
+  /* ── Shape ─────────────────────────────────────────────────────── */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-full: 999px;
+}
+
+/* ── Dark theme (default) ─────────────────────────────────────────── */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background-default: var(--neutral-950);
+  --background-raised: var(--neutral-900);
+  --background-sunken: #000000;
+  --background-overlay: var(--neutral-850);
+
+  --text-primary: var(--neutral-100);
+  --text-secondary: var(--neutral-300);
+  --text-muted: var(--neutral-400);
+  --text-inverse: var(--neutral-950);
+
+  --border-subtle: var(--neutral-800);
+  --border-default: var(--neutral-700);
+  --border-strong: var(--neutral-500);
+
+  --accent-default: var(--verdigris-500);
+  --accent-hover: var(--verdigris-600);
+  --accent-pressed: var(--verdigris-700);
+  --accent-on: var(--neutral-50);
+  --accent-text: var(--verdigris-300);
+  --accent-subtle: var(--verdigris-900);
+  --accent-line: var(--verdigris-400);
+
+  --status-success-fg: var(--success-300);
+  --status-success-bg: var(--neutral-900);
+  --status-success-border: var(--success-500);
+  --status-warning-fg: var(--warning-300);
+  --status-warning-bg: var(--neutral-900);
+  --status-warning-border: var(--warning-500);
+  --status-error-fg: var(--error-300);
+  --status-error-bg: var(--neutral-900);
+  --status-error-border: var(--error-500);
+  --status-info-fg: var(--info-300);
+  --status-info-bg: var(--neutral-900);
+  --status-info-border: var(--info-500);
+
+  --focus-ring: var(--verdigris-300);
+
+  /* 3D scene inputs, read by the engine at runtime. */
+  --scene-background: var(--background-default);
+  --scene-key: var(--neutral-100);
+  --scene-strip: var(--neutral-200);
+  --scene-fill: var(--neutral-800);
+  --scene-metal-face: var(--neutral-500);
+  --scene-metal-deep: var(--neutral-700);
+  --scene-metal-edge: var(--neutral-300);
+  --scene-patina: var(--verdigris-600);
+  --scene-patina-deep: var(--verdigris-700);
+  --scene-core: var(--neutral-800);
+  --scene-core-glow: var(--verdigris-300);
+  --scene-line: var(--verdigris-300);
+  --scene-shadow: #000000;
+}
+
+/* ── Light theme ──────────────────────────────────────────────────── */
+[data-theme="light"] {
+  color-scheme: light;
+
+  --background-default: var(--neutral-100);
+  --background-raised: var(--neutral-50);
+  --background-sunken: var(--neutral-200);
+  --background-overlay: var(--neutral-50);
+
+  --text-primary: var(--neutral-950);
+  --text-secondary: var(--neutral-700);
+  --text-muted: var(--neutral-600);
+  --text-inverse: var(--neutral-100);
+
+  --border-subtle: var(--neutral-200);
+  --border-default: var(--neutral-300);
+  --border-strong: var(--neutral-500);
+
+  --accent-default: var(--verdigris-600);
+  --accent-hover: var(--verdigris-700);
+  --accent-pressed: var(--verdigris-800);
+  --accent-on: var(--neutral-50);
+  --accent-text: var(--verdigris-600);
+  --accent-subtle: var(--verdigris-50);
+  --accent-line: var(--verdigris-500);
+
+  --status-success-fg: var(--success-700);
+  --status-success-bg: var(--neutral-50);
+  --status-success-border: var(--success-500);
+  --status-warning-fg: var(--warning-700);
+  --status-warning-bg: var(--neutral-50);
+  --status-warning-border: var(--warning-500);
+  --status-error-fg: var(--error-700);
+  --status-error-bg: var(--neutral-50);
+  --status-error-border: var(--error-500);
+  --status-info-fg: var(--info-700);
+  --status-info-bg: var(--neutral-50);
+  --status-info-border: var(--info-500);
+
+  --focus-ring: var(--verdigris-600);
+
+  --scene-background: var(--background-default);
+  --scene-key: var(--neutral-50);
+  --scene-strip: var(--neutral-100);
+  --scene-fill: var(--neutral-300);
+  --scene-metal-face: var(--neutral-500);
+  --scene-metal-deep: var(--neutral-600);
+  --scene-metal-edge: var(--neutral-200);
+  --scene-patina: var(--verdigris-500);
+  --scene-patina-deep: var(--verdigris-600);
+  --scene-core: var(--neutral-700);
+  --scene-core-glow: var(--verdigris-300);
+  --scene-line: var(--verdigris-600);
+  --scene-shadow: var(--neutral-600);
+}

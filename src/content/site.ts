@@ -46,8 +46,8 @@ export const NAV = [
 export const HERO = {
   titleLines: ["An OS built around", "a star."],
   /** One word in the supporting line rotates through these, at most one rotating word. */
-  rotating: ["quiet", "precise", "yours"],
-  supportBefore: "Arch underneath, kept",
+  rotating: ["precise", "simple", "quiet"],
+  supportBefore: "Arch Linux underneath, kept",
   supportAfter: `on the surface. ${BRAND.short} gives power users a calm desktop and every lever behind it.`,
   primaryCta: `Download ${BRAND.short}`,
   secondaryCta: "Read the docs",

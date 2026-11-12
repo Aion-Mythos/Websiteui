@@ -158,3 +158,19 @@ html.no-webgl .needs-webgl {
     scroll-behavior: auto !important;
   }
 }
+
+/* Split flap: the top flap falls away to reveal the next character. */
+.flap-fall {
+  animation-name: flap-fall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  backface-visibility: hidden;
+}
+@keyframes flap-fall {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(-90deg);
+  }
+}

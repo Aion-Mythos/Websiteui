@@ -72,7 +72,7 @@ export function Outro() {
           </dl>
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <LinkButton href={RELEASE.downloadUrl} aria-label={`Download ${RELEASE.isoFile}, ${RELEASE.isoSizeGB} GB`}>
+            <LinkButton href={RELEASE.downloadUrl}>
               <DownloadIcon />
               Download ISO · {RELEASE.isoSizeGB} GB
             </LinkButton>

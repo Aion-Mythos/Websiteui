@@ -53,7 +53,18 @@ export function Stage() {
     document.documentElement.dataset.stage = "loading";
     let disposed = false;
     let instance: Engine | null = null;
-    import("@/three/engine")
+    // The page is complete without 3D, so the engine waits until it has loaded and gone idle.
+    const whenIdle = () =>
+      new Promise<void>((resolve) => {
+        const go = () =>
+          typeof window.requestIdleCallback === "function"
+            ? window.requestIdleCallback(() => resolve(), { timeout: 1200 })
+            : setTimeout(resolve, 200);
+        if (document.readyState === "complete") go();
+        else window.addEventListener("load", go, { once: true });
+      });
+    whenIdle()
+      .then(() => import("@/three/engine"))
       .then(async ({ Engine }) => {
         if (disposed) return;
         instance = new Engine({

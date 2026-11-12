@@ -129,7 +129,7 @@ export function makeTextures() {
     (u, v, o) => {
       const gu = Math.abs(((u * 96) % 1) - 0.5),
         gv = Math.abs(((v * 48) % 1) - 0.5);
-      const seam = Math.max(0, 1 - Math.min(gu, gv) / 0.06) * 0.22;
+      const seam = Math.max(0, 1 - Math.min(gu, gv) / 0.05) * 0.1;
       const hot = Math.pow(fbm(u * 14, v * 7), 2.4) * 1.1;
       const val = Math.round(Math.min(1, 0.06 + seam + hot) * 255);
       o[0] = o[1] = o[2] = val;

@@ -11,7 +11,7 @@ Milestones from the build brief. Each one ends with `npm run build`, typecheck, 
 - [x] 7. Clock, hold to ignite and Web Audio
 - [x] 8. Post chain, adaptive quality and the loader
 - [x] 9. Reduced-motion and no-WebGL fallbacks
-- [ ] 10. Polish pass
+- [x] 10. Polish pass
 
 Milestones 3 to 9 landed in one commit. The engine, parts, cues, post chain, ignite and the
 fallback paths import each other, so they couldn't build or be tested in isolation. Each was still

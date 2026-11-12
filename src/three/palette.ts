@@ -30,7 +30,7 @@ export function readPalette(): Palette {
   for (const k of KEYS) {
     const raw = cs.getPropertyValue(`--scene-${k}`).trim();
     // setStyle converts sRGB CSS colours into the linear working space.
-    out[k] = new Color().setStyle(raw || "#808080");
+    out[k] = new Color().setStyle(raw || "rgb(128, 128, 128)");
   }
   out.backgroundCss = cs.getPropertyValue("--scene-background").trim();
   return out;

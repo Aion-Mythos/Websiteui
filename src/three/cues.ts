@@ -44,7 +44,7 @@ export const CUES: Cue[] = [
     at: 0,
     // The hero/thumbnail frame: the 120 mm ring overfills a 112 mm frame, so it arcs behind the title.
     shot: { ...base, frame: 112, polar: 84, azimuth: -14, offsetX: 0.2, offsetY: 0.03, scrim: 0.45 },
-    narrow: { frame: 128, offsetX: 0, offsetY: 0.08, dim: 0.62, scrim: 0 },
+    narrow: { frame: 128, offsetX: 0, offsetY: 0.08, dim: 0.76, scrim: 0 },
   },
   {
     id: "closeup",
@@ -52,7 +52,7 @@ export const CUES: Cue[] = [
     at: 0.42,
     // Push into the core, between two cage ribs. Time slows to 1/12.
     shot: { ...base, frame: 40, polar: 80, azimuth: 22.5, offsetX: 0.21, offsetY: 0, timeScale: 1 / 12, scrim: 0.9 },
-    narrow: { frame: 52, offsetX: 0, offsetY: 0.16, dim: 0.6, scrim: 0 },
+    narrow: { frame: 52, offsetX: 0, offsetY: 0.16, dim: 0.78, scrim: 0 },
   },
   {
     id: "apart-in",
@@ -74,7 +74,7 @@ export const CUES: Cue[] = [
     section: "around",
     at: 0,
     shot: { ...base, frame: 136, polar: 78, azimuth: 70, offsetX: 0.24, explode: 0.2, scrim: 0.75 },
-    narrow: { frame: 150, offsetX: 0, dim: 0.72, scrim: 0 },
+    narrow: { frame: 150, offsetX: 0, dim: 0.82, scrim: 0 },
   },
   {
     id: "around-out",
@@ -82,7 +82,7 @@ export const CUES: Cue[] = [
     at: 1,
     // Orbit while the defaults scroll past.
     shot: { ...base, frame: 128, polar: 86, azimuth: 250, offsetX: 0.24, explode: 0, scrim: 0.75 },
-    narrow: { frame: 150, offsetX: 0, dim: 0.72, scrim: 0 },
+    narrow: { frame: 150, offsetX: 0, dim: 0.82, scrim: 0 },
   },
   {
     id: "outro",
@@ -90,7 +90,7 @@ export const CUES: Cue[] = [
     at: 0.55,
     // Rebuilt: the ring settles back to the hero framing.
     shot: { ...base, frame: 116, polar: 84, azimuth: 346, offsetX: 0.25, offsetY: 0.03, scrim: 0.8 },
-    narrow: { frame: 128, offsetX: 0, offsetY: 0.12, dim: 0.75, scrim: 0 },
+    narrow: { frame: 128, offsetX: 0, offsetY: 0.12, dim: 0.84, scrim: 0 },
   },
 ];
 

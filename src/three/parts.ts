@@ -10,7 +10,7 @@ export const CORE = {
   /** Ø 18 mm faceted sphere. */
   diameter: 18,
   /** Icosahedron subdivision: dense facets read as a micro-patterned surface. */
-  detail: 4,
+  detail: 10,
 } as const;
 
 /** Inner gimbal rings on perpendicular axes. Section: radial width × axial height. */

@@ -83,7 +83,7 @@ export function makeMaterials(p: Palette, tx: Textures) {
     color: p.shadow,
     alphaMap: tx.shadow,
     transparent: true,
-    opacity: p.light ? 0.16 : 0.8,
+    opacity: p.light ? 0.16 : 0,
     depthWrite: false,
     side: DoubleSide,
   });
@@ -117,7 +117,7 @@ export function retint(m: MaterialSet, p: Palette) {
   m.core.color.copy(p.core);
   m.core.emissive.copy(p["core-glow"]);
   m.shadow.color.copy(p.shadow);
-  m.shadow.opacity = p.light ? 0.16 : 0.8;
+  m.shadow.opacity = p.light ? 0.16 : 0;
   m.line.color.copy(p.line);
 }
 

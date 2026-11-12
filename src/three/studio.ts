@@ -38,22 +38,29 @@ export function buildStudio(p: Palette) {
   // The room. Dark: near black with a faint warm floor bounce. Light: soft paper grey.
   const room = new Mesh(
     new SphereGeometry(20, 32, 16),
-    new MeshBasicMaterial({ color: p.fill.clone().multiplyScalar(L ? 0.2 : 0.04), side: BackSide, toneMapped: false }),
+    new MeshBasicMaterial({ color: p.fill.clone().multiplyScalar(L ? 0.2 : 0.1), side: BackSide, toneMapped: false }),
   );
   s.add(room);
 
   // Floor bounce: a broad dim panel below.
-  s.add(panel(30, 30, p.fill, L ? 0.28 : 0.06, new Vector3(0, -9, 0)));
+  s.add(panel(30, 30, p.fill, L ? 0.28 : 0.16, new Vector3(0, -9, 0)));
 
   // Key softbox: off-axis, above-left-front. The main shape on every face.
-  s.add(panel(L ? 8 : 6.5, L ? 5.5 : 4.5, p.key, L ? 2.6 : 3.6, new Vector3(-7, 6, 6)));
+  s.add(panel(L ? 8 : 7.5, L ? 5.5 : 5, p.key, L ? 2.6 : 3.8, new Vector3(-7, 6, 6)));
 
   // Two strip lights that draw thin edge lines on bevels and rings.
   s.add(panel(0.4, 9, p.strip, L ? 1.8 : 2.2, new Vector3(8.5, 1.5, -2.5)));
   s.add(panel(0.3, 8, p.strip, L ? 1.2 : 1.4, new Vector3(-6.5, 0.5, -7)));
 
+  if (!L) {
+    // Dark theme only: a broad, dim wash opposite the key and a low rim bar behind,
+    // so parts facing away from the softbox still read as metal instead of going black.
+    s.add(panel(12, 9, p.strip, 0.48, new Vector3(9, 2.5, 7)));
+    s.add(panel(11, 2.2, p.key, 1.2, new Vector3(0, 6.5, -9)));
+  }
+
   // A faint top scrim so polished tops are not black.
-  s.add(panel(6, 6, p.key, L ? 0.7 : 0.25, new Vector3(1, 11, -1)));
+  s.add(panel(6, 6, p.key, L ? 0.7 : 0.45, new Vector3(1, 11, -1)));
 
   return s;
 }

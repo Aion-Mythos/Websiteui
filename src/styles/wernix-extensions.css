@@ -21,8 +21,8 @@
   --scene-metal-face: var(--neutral-500);
   --scene-metal-deep: var(--neutral-700);
   --scene-metal-edge: var(--neutral-300);
-  --scene-patina: var(--verdigris-600);
-  --scene-patina-deep: var(--verdigris-700);
+  --scene-patina: var(--verdigris-500);
+  --scene-patina-deep: var(--verdigris-600);
   --scene-core: var(--neutral-800);
   --scene-core-glow: var(--verdigris-300);
   --scene-line: var(--verdigris-300);

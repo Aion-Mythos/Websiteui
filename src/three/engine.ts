@@ -357,7 +357,7 @@ export class Engine {
     o.ringMid.rotation.x = this.angMid;
     o.ringInner.rotation.z = this.angInner;
     const breath = reduced ? 0 : 0.5 + 0.5 * Math.sin((this.time / BEAT) * Math.PI * 2);
-    const glow = 0.16 + breath * 0.16 + this.beatFlash * 0.3 + st.ignite * 2.4 + this.flare * 9;
+    const glow = (this.palette.light ? 0.16 : 0.5) + breath * (this.palette.light ? 0.16 : 0.3) + this.beatFlash * 0.3 + st.ignite * 2.4 + this.flare * 9;
     this.materials.core.emissiveIntensity = glow;
     o.core.rotation.y = this.time * 0.05;
 

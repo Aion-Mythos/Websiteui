@@ -61,7 +61,8 @@ export function SplitFlapDisplay({
 
   useEffect(() => {
     const finals = targetKey.split("|");
-    if (prefersReducedMotion()) {
+    // `?snap` is the screenshot switch: headless browsers are too slow to finish the flips.
+    if (prefersReducedMotion() || new URLSearchParams(window.location.search).has("snap")) {
       const id = requestAnimationFrame(() => setShown(finals));
       return () => cancelAnimationFrame(id);
     }

@@ -174,3 +174,14 @@ html.no-webgl .needs-webgl {
     transform: rotateX(-90deg);
   }
 }
+
+/* Without WebGL there are no floating callouts, so the layer list shows on every width. */
+html.no-webgl .apart-list {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  clip-path: none;
+  white-space: normal;
+}

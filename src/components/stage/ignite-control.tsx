@@ -22,6 +22,7 @@ export function IgniteControl({ className }: { className?: string }) {
   const progress = useRef(0);
   const raf = useRef(0);
   const last = useRef(0);
+  const timer = useRef(0);
   const [status, setStatus] = useState<"idle" | "holding" | "ignited">("idle");
   const ignitions = useStage((s) => s.ignitions);
 
@@ -29,24 +30,13 @@ export function IgniteControl({ className }: { className?: string }) {
     if (arc.current) arc.current.style.strokeDashoffset = String(C * (1 - progress.current));
   };
 
+  // Progress follows real time held, so a slow frame rate can't stretch the hold.
   const loop = (now: number) => {
-    const dt = Math.min(0.05, (now - last.current) / 1000);
+    const dt = Math.min(0.5, (now - last.current) / 1000);
     last.current = now;
     let p = progress.current;
-    if (holding.current) {
-      p += dt / HOLD_SECONDS;
-      if (p >= 1) {
-        p = 1;
-        holding.current = false;
-        const n = stage.get().ignitions + 1;
-        stage.set({ ignitions: n, holding: false });
-        brandAudio.stopDrone(0.25);
-        brandAudio.chord();
-        setStatus("ignited");
-      }
-    } else {
-      p -= dt * DECAY_PER_SECOND * (p >= 1 ? 0.6 : 1);
-    }
+    if (holding.current) p = Math.min(1, p + dt / HOLD_SECONDS);
+    else p -= dt * DECAY_PER_SECOND * (p >= 1 ? 0.6 : 1);
     p = Math.max(0, p);
     progress.current = p;
     stage.set({ ignite: p });
@@ -59,6 +49,17 @@ export function IgniteControl({ className }: { className?: string }) {
     if (raf.current) return;
     last.current = performance.now();
     raf.current = requestAnimationFrame(loop);
+  };
+
+  const complete = () => {
+    if (!holding.current) return;
+    holding.current = false;
+    progress.current = 1;
+    stage.set({ ignitions: stage.get().ignitions + 1, holding: false, ignite: 1 });
+    brandAudio.stopDrone(0.25);
+    brandAudio.chord();
+    setStatus("ignited");
+    kick();
   };
 
   const start = () => {
@@ -74,12 +75,15 @@ export function IgniteControl({ className }: { className?: string }) {
     stage.set({ holding: true });
     setStatus("holding");
     brandAudio.startDrone();
+    window.clearTimeout(timer.current);
+    timer.current = window.setTimeout(complete, (1 - progress.current) * HOLD_SECONDS * 1000);
     kick();
   };
 
   const end = () => {
     // iOS only grants motion permission from a click-like gesture, so ask again on release.
     enableTilt();
+    window.clearTimeout(timer.current);
     if (!holding.current) return;
     holding.current = false;
     stage.set({ holding: false });
@@ -88,10 +92,16 @@ export function IgniteControl({ className }: { className?: string }) {
     kick();
   };
 
-  useEffect(() => () => cancelAnimationFrame(raf.current), []);
+  useEffect(
+    () => () => {
+      cancelAnimationFrame(raf.current);
+      window.clearTimeout(timer.current);
+    },
+    [],
+  );
 
   const message =
-    status === "holding" ? "Igniting, keep holding" : status === "ignited" ? "Core ignited" : "Hold to ignite";
+    status === "holding" ? "Igniting, keep holding" : status === "ignited" ? "Core ignited" : "Press and hold";
 
   return (
     <div className={cn("flex items-center gap-4", className)}>

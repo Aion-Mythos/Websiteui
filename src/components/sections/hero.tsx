@@ -49,7 +49,7 @@ export function Hero() {
         </div>
       </div>
 
-      <div className="wrap needs-webgl pb-8 lg:absolute lg:bottom-10 lg:right-0 lg:w-auto lg:pb-0">
+      <div className="wrap needs-webgl pb-20 sm:pb-10 lg:absolute lg:bottom-10 lg:right-[14%] lg:w-auto lg:pb-0">
         <IgniteControl />
       </div>
     </section>

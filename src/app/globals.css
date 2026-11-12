@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "../styles/wernix-colors.css";
+@import "../styles/wernix-extensions.css";
 
 /*
  * Tailwind's default palette and radii are switched off so the only colours
@@ -12,42 +13,75 @@
 }
 
 @theme inline {
+  /* Level 2 semantic tokens */
   --color-page: var(--background-default);
-  --color-raised: var(--background-raised);
-  --color-sunken: var(--background-sunken);
-  --color-overlay: var(--background-overlay);
+  --color-subtle: var(--background-subtle);
+  --color-raised: var(--surface-default);
+  --color-raised-2: var(--surface-raised);
+  --color-sunken: var(--surface-sunken);
+  --color-overlay: var(--surface-overlay);
+  --color-hover: var(--surface-hover);
 
   --color-ink: var(--text-primary);
   --color-ink-2: var(--text-secondary);
-  --color-ink-3: var(--text-muted);
-  --color-ink-inverse: var(--text-inverse);
+  --color-ink-3: var(--text-tertiary);
 
   --color-hairline: var(--border-subtle);
   --color-line: var(--border-default);
   --color-line-strong: var(--border-strong);
 
+  --color-icon: var(--icon-primary);
+  --color-icon-2: var(--icon-secondary);
+
   --color-accent: var(--accent-default);
   --color-accent-hover: var(--accent-hover);
-  --color-accent-pressed: var(--accent-pressed);
-  --color-accent-on: var(--accent-on);
-  --color-accent-text: var(--accent-text);
+  --color-accent-pressed: var(--accent-active);
+  --color-accent-on: var(--accent-foreground);
   --color-accent-subtle: var(--accent-subtle);
-  --color-accent-line: var(--accent-line);
+  --color-accent-line: var(--accent-default);
+  --color-accent-text: var(--text-link);
 
-  --color-success: var(--status-success-fg);
-  --color-success-bg: var(--status-success-bg);
-  --color-success-line: var(--status-success-border);
-  --color-warning: var(--status-warning-fg);
-  --color-warning-bg: var(--status-warning-bg);
-  --color-warning-line: var(--status-warning-border);
-  --color-error: var(--status-error-fg);
-  --color-error-bg: var(--status-error-bg);
-  --color-error-line: var(--status-error-border);
-  --color-info: var(--status-info-fg);
-  --color-info-bg: var(--status-info-bg);
-  --color-info-line: var(--status-info-border);
+  --color-success: var(--success-text);
+  --color-success-bg: var(--success-bg);
+  --color-success-line: var(--success-border);
+  --color-success-icon: var(--success-icon);
+  --color-warning: var(--warning-text);
+  --color-warning-bg: var(--warning-bg);
+  --color-warning-line: var(--warning-border);
+  --color-warning-icon: var(--warning-icon);
+  --color-error: var(--error-text);
+  --color-error-bg: var(--error-bg);
+  --color-error-line: var(--error-border);
+  --color-error-icon: var(--error-icon);
+  --color-info: var(--info-text);
+  --color-info-bg: var(--info-bg);
+  --color-info-line: var(--info-border);
+  --color-info-icon: var(--info-icon);
 
   --color-focus: var(--focus-ring);
+
+  /* Level 3 component tokens */
+  --color-btn-primary: var(--button-primary-bg);
+  --color-btn-primary-hover: var(--button-primary-bg-hover);
+  --color-btn-primary-active: var(--button-primary-bg-active);
+  --color-btn-primary-fg: var(--button-primary-fg);
+  --color-btn-secondary: var(--button-secondary-bg);
+  --color-btn-secondary-hover: var(--button-secondary-bg-hover);
+  --color-btn-secondary-border: var(--button-secondary-border);
+  --color-btn-secondary-fg: var(--button-secondary-fg);
+  --color-btn-ghost-hover: var(--button-ghost-bg-hover);
+  --color-btn-ghost-fg: var(--button-ghost-fg);
+  --color-control-border: var(--control-border);
+  --color-control-checked: var(--control-checked-bg);
+  --color-control-checked-fg: var(--control-checked-fg);
+  --color-control-thumb: var(--control-thumb);
+  --color-nav-fg: var(--nav-item-fg);
+  --color-nav-hover: var(--nav-item-bg-hover);
+  --color-card: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-card-border-hover: var(--card-border-hover);
+  --color-link: var(--link-fg);
+  --color-link-hover: var(--link-fg-hover);
 
   --radius-control: var(--radius-md);
   --radius-card: var(--radius-lg);
@@ -91,7 +125,7 @@
 
   ::selection {
     background: var(--accent-default);
-    color: var(--accent-on);
+    color: var(--accent-foreground);
   }
 
   :focus-visible {
@@ -114,7 +148,7 @@
     font-family: var(--font-mono);
     font-size: 12px;
     letter-spacing: 0.04em;
-    color: var(--text-muted);
+    color: var(--text-tertiary);
   }
 
   .wrap {

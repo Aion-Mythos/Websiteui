@@ -72,6 +72,7 @@ const finalShader = {
     uBg: { value: new Color() },
     uDim: { value: 0 },
     uScrim: { value: 0 },
+    uScrimEnd: { value: 0.56 },
     uGrain: { value: 0.035 },
     uTime: { value: 0 },
     uRes: { value: new Vector2(1, 1) },
@@ -83,6 +84,7 @@ const finalShader = {
     uniform vec3 uBg;
     uniform float uDim;
     uniform float uScrim;
+    uniform float uScrimEnd;
     uniform float uGrain;
     uniform float uTime;
     uniform vec2 uRes;
@@ -94,7 +96,7 @@ const finalShader = {
       vec3 col = c + uBg * (1.0 - a);
       col = mix(col, uBg, uDim);
       // Text-side scrim: the object fades into the page where the copy sits.
-      col = mix(col, uBg, uScrim * (1.0 - smoothstep(0.18, 0.56, vUv.x)));
+      col = mix(col, uBg, uScrim * (1.0 - smoothstep(uScrimEnd - 0.38, uScrimEnd, vUv.x)));
       float n = hash(floor(vUv * uRes) + fract(uTime) * 61.0) - 0.5;
       col += n * uGrain * (0.35 + 0.65 * a);
       gl_FragColor = vec4(col, 1.0);
@@ -140,6 +142,11 @@ export class Post {
 
   set bloomEnabled(on: boolean) {
     this.bloom.enabled = on;
+  }
+
+  /** Light pages show dark metal at full contrast behind dark text, so the scrim reaches further and harder there. */
+  setScrimReach(end: number) {
+    this.final.uniforms.uScrimEnd.value = end;
   }
 
   render(dt: number, time: number, dim: number, scrim: number) {

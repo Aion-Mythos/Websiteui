@@ -1,0 +1,46 @@
+/*
+ * Additions the generated colour system doesn't cover. Kept out of
+ * wernix-colors.css, which is generated and must not be edited by hand.
+ * Everything here references its primitives; no new colours are introduced.
+ */
+
+/* Shape, as named in the brief. */
+:root {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+}
+
+/* 3D scene inputs, read by the engine at runtime (src/three/palette.ts). */
+:root,
+[data-theme="dark"] {
+  --scene-background: var(--background-default);
+  --scene-key: var(--neutral-100);
+  --scene-strip: var(--neutral-200);
+  --scene-fill: var(--neutral-800);
+  --scene-metal-face: var(--neutral-500);
+  --scene-metal-deep: var(--neutral-700);
+  --scene-metal-edge: var(--neutral-300);
+  --scene-patina: var(--verdigris-600);
+  --scene-patina-deep: var(--verdigris-700);
+  --scene-core: var(--neutral-800);
+  --scene-core-glow: var(--verdigris-300);
+  --scene-line: var(--verdigris-300);
+  --scene-shadow: var(--neutral-950);
+}
+
+[data-theme="light"] {
+  --scene-background: var(--background-default);
+  --scene-key: var(--neutral-50);
+  --scene-strip: var(--neutral-100);
+  --scene-fill: var(--neutral-300);
+  --scene-metal-face: var(--neutral-500);
+  --scene-metal-deep: var(--neutral-600);
+  --scene-metal-edge: var(--neutral-200);
+  --scene-patina: var(--verdigris-500);
+  --scene-patina-deep: var(--verdigris-600);
+  --scene-core: var(--neutral-700);
+  --scene-core-glow: var(--verdigris-300);
+  --scene-line: var(--verdigris-600);
+  --scene-shadow: var(--neutral-600);
+}

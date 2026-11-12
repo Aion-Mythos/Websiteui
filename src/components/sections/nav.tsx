@@ -32,9 +32,9 @@ export function Nav() {
     <header
       ref={ref}
       className={cn(
-        "group fixed inset-x-0 top-0 z-40 border-b border-transparent transition-colors duration-300",
-        "data-[scrolled]:border-hairline data-[scrolled]:bg-page",
-        open && "border-hairline bg-page",
+        "group fixed inset-x-0 top-0 z-40 border-b border-transparent bg-page transition-colors duration-300",
+        "data-[scrolled]:border-hairline",
+        open && "border-hairline",
       )}
     >
       <nav aria-label="Main" className="wrap flex h-16 items-center justify-between gap-4">
@@ -48,7 +48,7 @@ export function Nav() {
             <li key={l.label}>
               <a
                 href={l.href}
-                className="rounded-control px-3 py-2 text-[14px] text-ink-2 transition-colors hover:text-ink"
+                className="rounded-control px-3 py-2 text-[14px] text-nav-fg transition-colors hover:bg-nav-hover hover:text-ink"
               >
                 {l.label}
               </a>
@@ -86,7 +86,7 @@ export function Nav() {
               <a
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block rounded-control py-3 text-[16px] text-ink-2 hover:text-ink"
+                className="block rounded-control py-3 text-[16px] text-nav-fg hover:text-ink"
               >
                 {l.label}
               </a>

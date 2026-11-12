@@ -72,7 +72,7 @@ export default function DocsPage() {
           </ul>
         </section>
 
-        <Link href="/" className="mt-14 inline-flex items-center gap-2 rounded-chip text-[15px] text-accent-text hover:underline">
+        <Link href="/" className="mt-14 inline-flex items-center gap-2 rounded-chip text-[15px] text-link hover:text-link-hover hover:underline">
           Back to {BRAND.short}
           <ArrowIcon />
         </Link>

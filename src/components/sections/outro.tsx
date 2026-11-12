@@ -28,7 +28,7 @@ export function Outro() {
 
         <div
           id="download"
-          className="mt-12 max-w-[640px] scroll-mt-24 rounded-card border border-hairline bg-page p-5 sm:p-7"
+          className="mt-12 max-w-[640px] scroll-mt-24 rounded-card border border-card-border bg-card p-5 sm:p-7"
         >
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>

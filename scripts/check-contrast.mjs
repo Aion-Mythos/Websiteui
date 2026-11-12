@@ -19,6 +19,7 @@ const dark = { ...raw, ...block(/:root,\s*\[data-theme="dark"\]/) };
 const light = { ...dark, ...block(/\[data-theme="light"\]/) };
 
 function resolve(vars, v, depth = 0) {
+  if (v === undefined) throw new Error("unknown token");
   if (depth > 10) throw new Error("var loop " + v);
   const m = /^var\((--[\w-]+)\)$/.exec(v);
   return m ? resolve(vars, vars[m[1]], depth + 1) : v;
@@ -35,24 +36,31 @@ function ratio(a, b) {
   return (x + 0.05) / (y + 0.05);
 }
 
-// [foreground, background, minimum ratio]
+// [foreground, background, minimum ratio]. Text needs 4.5:1; icons, focus
+// rings and control parts need 3:1 (WCAG 1.4.11).
+const TEXT_BGS = ["--background-default", "--surface-default", "--surface-sunken", "--card-bg"];
 const pairs = [
-  ["--text-primary", "--background-default", 4.5],
-  ["--text-secondary", "--background-default", 4.5],
-  ["--text-muted", "--background-default", 4.5],
-  ["--text-primary", "--background-raised", 4.5],
-  ["--text-secondary", "--background-raised", 4.5],
-  ["--text-muted", "--background-raised", 4.5],
-  ["--accent-text", "--background-default", 4.5],
-  ["--accent-text", "--background-raised", 4.5],
-  ["--accent-on", "--accent-default", 4.5],
-  ["--accent-on", "--accent-hover", 4.5],
-  ["--status-success-fg", "--status-success-bg", 4.5],
-  ["--status-warning-fg", "--status-warning-bg", 4.5],
-  ["--status-error-fg", "--status-error-bg", 4.5],
-  ["--status-info-fg", "--status-info-bg", 4.5],
+  ...["--text-primary", "--text-secondary", "--text-tertiary", "--text-link"].flatMap((fg) => TEXT_BGS.map((bg) => [fg, bg, 4.5])),
+  ["--button-primary-fg", "--button-primary-bg", 4.5],
+  ["--button-primary-fg", "--button-primary-bg-hover", 4.5],
+  ["--button-primary-fg", "--button-primary-bg-active", 4.5],
+  ["--button-secondary-fg", "--button-secondary-bg", 4.5],
+  ["--button-secondary-fg", "--button-secondary-bg-hover", 4.5],
+  ["--nav-item-fg", "--background-default", 4.5],
+  ["--nav-item-fg", "--nav-item-bg-hover", 4.5],
+  ["--text-primary", "--nav-item-bg-hover", 4.5],
+  ["--success-text", "--success-bg", 4.5],
+  ["--warning-text", "--warning-bg", 4.5],
+  ["--error-text", "--error-bg", 4.5],
+  ["--info-text", "--info-bg", 4.5],
+  ["--success-icon", "--success-bg", 3],
+  ["--warning-icon", "--warning-bg", 3],
+  ["--error-icon", "--error-bg", 3],
+  ["--info-icon", "--info-bg", 3],
   ["--focus-ring", "--background-default", 3],
-  ["--border-strong", "--background-default", 3],
+  ["--focus-ring", "--card-bg", 3],
+  ["--control-checked-fg", "--control-checked-bg", 3],
+  ["--control-border", "--background-default", 3],
 ];
 
 let failed = 0;

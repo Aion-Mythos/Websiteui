@@ -35,7 +35,7 @@ export function Hero() {
             </LinkButton>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div className="mt-8 flex flex-col items-start gap-2">
             <SplitFlapDisplay
               size="xs"
               columns={meta.length + spec.length + 2}

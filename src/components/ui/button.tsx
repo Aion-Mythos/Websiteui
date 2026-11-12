@@ -8,9 +8,9 @@ const base =
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-control font-medium transition-colors duration-150 select-none";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-accent text-accent-on hover:bg-accent-hover active:bg-accent-pressed",
-  secondary: "border border-line text-ink hover:border-line-strong hover:bg-raised",
-  ghost: "text-ink-2 hover:text-ink",
+  primary: "bg-btn-primary text-btn-primary-fg hover:bg-btn-primary-hover active:bg-btn-primary-active",
+  secondary: "border border-btn-secondary-border bg-btn-secondary text-btn-secondary-fg hover:bg-btn-secondary-hover",
+  ghost: "text-btn-ghost-fg hover:bg-btn-ghost-hover",
 };
 
 const sizes: Record<Size, string> = {

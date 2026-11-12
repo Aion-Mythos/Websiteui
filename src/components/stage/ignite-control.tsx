@@ -104,7 +104,7 @@ export function IgniteControl({ className }: { className?: string }) {
     status === "holding" ? "Igniting, keep holding" : status === "ignited" ? "Core ignited" : "Press and hold";
 
   return (
-    <div className={cn("flex items-center gap-4", className)}>
+    <div className={cn("inline-flex items-center gap-4 rounded-card border border-hairline bg-page py-2 pl-2 pr-5", className)}>
       <button
         type="button"
         aria-label="Hold to ignite the core. Press and hold, or hold Space or Enter."

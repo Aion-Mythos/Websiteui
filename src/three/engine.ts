@@ -372,7 +372,9 @@ export class Engine {
     this.env.pitch += ((py - 0.5) * 0.3 - this.env.pitch) * ek;
     this.scene.environmentRotation.set(this.env.pitch, this.env.yaw, 0);
 
-    this.post.render(dt, now / 1000, this.shot.dim, this.shot.scrim);
+    const light = this.palette.light;
+    this.post.setScrimReach(light ? 0.64 : 0.56);
+    this.post.render(dt, now / 1000, this.shot.dim, light ? Math.min(0.94, this.shot.scrim * 1.9) : this.shot.scrim);
     this.emit();
     if (!snap) this.adapt(dt, now);
   }

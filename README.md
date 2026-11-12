@@ -19,6 +19,6 @@ node scripts/js-budget.mjs http://localhost:3000                 # JS shipped fo
 ```
 
 - Content and release data: `src/content/site.ts`
-- Colour tokens: `src/styles/wernix-colors.css` (see `DECISIONS.md` D1)
+- Colour tokens: `src/styles/wernix-colors.css` (generated, do not edit) plus `src/styles/wernix-extensions.css` (radii and 3D scene inputs)
 - 3D: `src/three/` (`engine.ts`, `parts.ts`, `sdf.ts`, `ortiplex.ts`, `cues.ts`, `post.ts`, `audio.ts`)
 - `PROGRESS.md` tracks milestones; `DECISIONS.md` lists every assumption.

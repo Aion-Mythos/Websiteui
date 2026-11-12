@@ -50,13 +50,13 @@ export function StageControls() {
           aria-hidden="true"
           className={cn(
             "relative h-4 w-7 rounded-full border transition-colors",
-            blueprint ? "border-accent bg-accent" : "border-line bg-raised",
+            blueprint ? "border-control-checked bg-control-checked" : "border-control-border bg-control-thumb",
           )}
         >
           <span
             className={cn(
               "absolute top-1/2 size-2.5 -translate-y-1/2 rounded-full transition-[left,background-color]",
-              blueprint ? "left-[14px] bg-accent-on" : "left-[2px] bg-ink-3",
+              blueprint ? "left-[14px] bg-control-checked-fg" : "left-[2px] bg-control-border",
             )}
           />
         </span>
